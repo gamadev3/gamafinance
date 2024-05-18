@@ -1,0 +1,32 @@
+{% extends "global/base.html"%}
+
+{% block content %}
+
+<hr>
+<a href="{% url 'atualizar_contas' pk=object.pk %}">Alterar Informações</a>
+
+
+<p>
+    <strong>Nome: </strong> {{ object.nome }}
+</p>
+
+<p>
+    <strong>Valor: </strong> {{ object.valor }}
+</p>
+
+<p>
+    <strong>Data de Vencimento: </strong> {{ object.data_vencimento }}
+</p>
+
+<p>
+    <strong>Situação: </strong> {{ object.get_situacao_display }}
+</p>
+
+<p>
+    <strong>Observação: </strong> {{ object.observacao }}
+</p>
+
+<a href="#">Pagar</a> | 
+<a href="#">Cancelar</a>
+
+{% endblock content %}

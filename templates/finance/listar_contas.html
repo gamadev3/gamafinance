@@ -1,0 +1,46 @@
+{% extends "global/base.html" %}
+
+{% block content %}
+
+<h2>Listar Contas:</h2>
+
+<form method="get" action="{% url 'listar_contas' %}" >
+    <label for="txt-pesq-conta">Pesquisar: </label>
+    <input type="text" name="search" id="idPesqConta">
+<br>
+        <input type="checkbox" name="cb-todos" id="cbTodos"> Todos
+        <input type="checkbox" name="cb-abertos" id="cbAbertos"> Abertos
+        <input type="checkbox" name="cb-vencidos" id="cbVencidos"> Vencidos
+<br>
+    <button type="submit">Buscar</button>
+</form>
+
+<main>
+    <hr>
+    {% if contas %}
+    <table border="2">
+        <thead>
+            <th>Descrição:</th>
+            <th>Data Vencimento:</th>
+            <th>Situação:</th>
+            <th>Valor:</th>
+            <th>Ações:</th>
+        </thead>
+        <body>            
+            {% for conta in contas %}
+            <tr>
+                <td>{{ conta.nome }}</td>
+                <td>{{ conta.data_vencimento|date:"d/m/Y" }}</td>
+                <td>{{ conta.get_situacao_display }}</td>
+                <td>R$ {{ conta.valor }}</td>
+                <td><a href="{% url 'detalhar_contas' conta.pk %}">Detalhar</a> - <button type="menu">Pagar</button> - <button>Cancelar</button></td>
+            </tr>
+            {% endfor %}
+        </body>
+    </table>
+    {% else %}
+        <p>Não existe contas</p>
+    {% endif %}
+    
+    {% endblock content %}
+</main>
