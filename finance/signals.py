@@ -9,7 +9,7 @@ def send_notification_when_pay(sender, instance, **kwargs):
     notify = Notify()
     data = {
         "nome": instance.nome,
-        "valor": instance.valor,
+        "valor": str(instance.valor),
         "situacao": "PAGO"
     }
     notify.send_event(data)
