@@ -1,7 +1,7 @@
 from django.views.generic import ListView, CreateView, DetailView, UpdateView
 from django.utils import timezone
-from finance.models import Conta
-from finance.forms import ContaForm
+from finance.models import Conta, Categoria
+from finance.forms import ContaForm, CategoriaForm
 
 
 # Create your views here.
@@ -31,7 +31,7 @@ class CriarConta(CreateView):
     model = Conta
     form_class = ContaForm
     template_name = "finance/add_contas.html"
-    success_url = "/finance/listar/"
+    success_url = "/"
 
 
 class DetalheConta(DetailView):
@@ -43,4 +43,11 @@ class AtualizarConta(UpdateView):
     model = Conta
     form_class = ContaForm
     template_name = "finance/atualizar_conta.html"
-    success_url = "/finance/listar/"
+    success_url = "/"
+
+
+class CreateCategory(CreateView):
+    model = Categoria
+    form_class = CategoriaForm
+    template_name = "category/create.html"
+    success_url = "/"
