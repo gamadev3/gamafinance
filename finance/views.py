@@ -11,7 +11,7 @@ class ListarContas(ListView):
     context_object_name = "contas"
 
     def get_queryset(self):
-        queryset = super().get_queryset().order_by("data_vencimento")
+        queryset = super().get_queryset().order_by("data_vencimento").exclude(situacao="P")
         search = self.request.GET.get("search")
         todos = self.request.GET.get("cb-todos")
         abertos = self.request.GET.get("cb-abertos")

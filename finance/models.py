@@ -24,6 +24,7 @@ class Conta(models.Model):
         max_length=1, choices=ContaSituacao, default=ContaSituacao.ABERTO
     )
     categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT)
+    cod_barra = models.CharField(max_length=250, default="Não Disponível")
     observacao = models.TextField(blank=True, null=True)
 
     def __str__(self) -> str:
