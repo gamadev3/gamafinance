@@ -1,4 +1,5 @@
-from django.views.generic import ListView, CreateView, DetailView, UpdateView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, View
+from django.shortcuts import redirect
 from django.utils import timezone
 from finance.models import Conta, Categoria
 from finance.forms import ContaForm, CategoriaForm
@@ -45,6 +46,12 @@ class AtualizarConta(UpdateView):
     template_name = "finance/atualizar_conta.html"
     success_url = "/"
 
+class PagarConta(View):
+    def get(self, request, pk):
+        conta = Conta.objects.get(pk=pk)
+        conta.situacao = "P"
+        conta.save()
+        return redirect("listar_contas")
 
 class CreateCategory(CreateView):
     model = Categoria

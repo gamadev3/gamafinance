@@ -30,7 +30,7 @@
     <strong>Observação: </strong> {{ object.observacao }}
 </p>
 
-<a href="#">Pagar</a> | 
+<a href="{% url 'pagar_contas' conta.pk %}">Pagar</a> | 
 <a href="{% url 'listar_contas' %}">Cancelar</a>
 
 {% endblock content %}
