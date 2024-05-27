@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from finance.models import Conta
@@ -10,7 +11,8 @@ def send_notification_when_pay(sender, instance, **kwargs):
     data = {
         "nome": instance.nome,
         "valor": str(instance.valor),
-        "situacao": "PAGO"
+        "situacao": "PAGO",
+        "timestamp": datetime.now().strftime("%d/%m/%Y, %H:%M:%S"),
     }
     notify.send_event(data)
 
