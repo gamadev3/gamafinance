@@ -21,7 +21,7 @@
 <main>
     <hr>
     {% if contas %}
-    <table border="2">
+    <table class="table table-striped">
         <thead>
             <th>Descrição:</th>
             <th>Data Vencimento:</th>
@@ -33,7 +33,7 @@
             {% for conta in contas %}
             <tr>
                 <td>{{ conta.nome }}</td>
-                <td>{{ conta.data_vencimento|date:"d/m/Y" }}</td>
+                <td><i class="bi bi-calendar-date"></i> {{ conta.data_vencimento|date:"d/m/Y" }}</td>
                 <td>{{ conta.get_situacao_display }}</td>
                 <td>R$ {{ conta.valor }}</td>
                 <td><a href="{% url 'detalhar_contas' conta.pk %}">Detalhar</a> - <a href="{% url 'pagar_contas' conta.pk %}">Pagar</a></td>
