@@ -1,5 +1,12 @@
 from django.urls import path
-from finance.views import ListarContas, CriarConta, DetalheConta, AtualizarConta, CreateCategory, PagarConta
+from finance.views import (
+    ListarContas,
+    CriarConta,
+    DetalheConta,
+    AtualizarConta,
+    CreateCategory,
+    PagarConta,
+)
 
 
 urlpatterns = [
@@ -9,8 +16,6 @@ urlpatterns = [
     path(
         "detalhar/<int:pk>/update/", AtualizarConta.as_view(), name="atualizar_contas"
     ),
-    path("category/cadastrar", CreateCategory.as_view(), name="create_category"),
-    path(
-        "detalhar/<int:pk>/pagar/", PagarConta.as_view(), name="pagar_contas"
-    ),
+    path("category/cadastrar", CreateCategory.as_view(), name="criar_categoria"),
+    path("detalhar/<int:pk>/pagar/", PagarConta.as_view(), name="pagar_contas"),
 ]
