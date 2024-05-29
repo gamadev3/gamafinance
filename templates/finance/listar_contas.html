@@ -33,7 +33,7 @@
                 <td>{{ conta.data_vencimento|date:"d/m/Y" }}</td>
                 <td>{{ conta.get_situacao_display }}</td>
                 <td>R$ {{ conta.valor }}</td>
-                <td><a href="{% url 'detalhar_contas' conta.pk %}">Detalhar</a> - <a href="{% url 'pagar_contas' conta.pk %}">Pagar</a> - <button>Cancelar</button></td>
+                <td><a href="{% url 'detalhar_contas' conta.pk %}">Detalhar</a> - <a href="{% url 'pagar_contas' conta.pk %}">Pagar</a></td>
             </tr>
             {% endfor %}
         </body>
